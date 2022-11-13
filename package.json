@@ -1,0 +1,104 @@
+{
+  "private": true,
+  "name": "workloads",
+  "description": "NR1 Package for Workloads",
+  "version": "0.1.853",
+  "nr1": {
+    "first-party": true
+  },
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "lint": "npm run lint:js && npm run lint:css",
+    "test": "nr1 nerdpack:test:unit",
+    "tdd": "jest --watch",
+    "types:check": "tsc --noEmit",
+    "types:download": "./scripts/download-nerdgraph-types.sh",
+    "types:generate": "./scripts/generate-nerdgraph-fragments.js && ./scripts/generate-apollo-ts-types.sh",
+    "e2e": "nr1-e2e-test-proto test --waitforTimeout=25000 --logLevel=warn",
+    "e2e:gc": "npm run e2e -- --sauce --nerdpackModifier=GC --reportToInsights",
+    "e2e:local": "npm run e2e -- --nerdpackModifier=local",
+    "synthetics:deploy": "run.env synthetics deploy",
+    "synthetics:run": "run.env synthetics run-local",
+    "snyk-protect": "snyk-protect",
+    "prepublish": "npm run snyk-protect",
+    "lint:css": "nr1 nerdpack:lint:style",
+    "lint:js": "nr1 nerdpack:lint:js",
+    "test:watch": "npm test -- --watch --onlyChanged",
+    "prepare": "nr1 nerdpack:prepare"
+  },
+  "synthetics": {
+    "staging": {
+      "slackNotificationUrl": "https://urldefense.proofpoint.com/v2/url?u=https-3A__hooks.slack.com_services_T02D34WJD_BSJBDFVNX_LdoBIuwUmeiWTuqObNKTBegs&d=DwIGaQ&c=wwDYKmuffy0jxUGHACmjfA&r=Z4snTuPRbNSFz_MzSXpdtQ&m=bCJbnbRRk0R_3ige1GgSWWdDUVhXeJBk8NxRpQBC4EqARfuepwQf4AiJmvwubOTb&s=d22MT-AoFgPI7NCCbGXVWiUaMtxBxN9mZ7wQVuy9ugw&e= "
+    },
+    "production-us": {
+      "slackNotificationUrl": "https://urldefense.proofpoint.com/v2/url?u=https-3A__hooks.slack.com_services_T02D34WJD_BSJBDFVNX_LdoBIuwUmeiWTuqObNKTBegs&d=DwIGaQ&c=wwDYKmuffy0jxUGHACmjfA&r=Z4snTuPRbNSFz_MzSXpdtQ&m=bCJbnbRRk0R_3ige1GgSWWdDUVhXeJBk8NxRpQBC4EqARfuepwQf4AiJmvwubOTb&s=d22MT-AoFgPI7NCCbGXVWiUaMtxBxN9mZ7wQVuy9ugw&e= "
+    },
+    "production-eu": {
+      "slackNotificationUrl": "https://urldefense.proofpoint.com/v2/url?u=https-3A__hooks.slack.com_services_T02D34WJD_BSJBDFVNX_LdoBIuwUmeiWTuqObNKTBegs&d=DwIGaQ&c=wwDYKmuffy0jxUGHACmjfA&r=Z4snTuPRbNSFz_MzSXpdtQ&m=bCJbnbRRk0R_3ige1GgSWWdDUVhXeJBk8NxRpQBC4EqARfuepwQf4AiJmvwubOTb&s=d22MT-AoFgPI7NCCbGXVWiUaMtxBxN9mZ7wQVuy9ugw&e= "
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@source.datanerd.us:workloads/workloads.git"
+  },
+  "bugs": {
+    "email": "team_workloads@newrelic.com"
+  },
+  "author": "NEW RELIC",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@datanerd/entities-empty-state": "^2.0.2",
+    "@datanerd/high-density-view": "^7.8.1",
+    "@datanerd/meatballs-inventory-ui": "^5.1.4",
+    "@datanerd/mosaic": "^23.3.8",
+    "@datanerd/nr-ui-legacy": "^10.3.4",
+    "@datanerd/nr1-nrql-filters": "^4.1.0",
+    "@datanerd/service-levels-components": "^0.2.196",
+    "@datanerd/shared-component-activity-stream": "^1.41.2",
+    "@datanerd/shared-component-entities-filter-bar": "^2.14.0",
+    "@datanerd/shared-component-entity-table": "^1.1.0",
+    "@datanerd/shared-component-mini-overview": "^1.75.0",
+    "@datanerd/shared-component-omnimap": "^1.33.0",
+    "@datanerd/shared-component-product-empty-state": "^1.19.1",
+    "@datanerd/vizco": "^24.49.4",
+    "@datanerd/workloads-components": "^1.4.0",
+    "classnames": "^2.3.1",
+    "copy-to-clipboard": "^3.3.1",
+    "lodash": "^4.17.21",
+    "memoize-one": "^5.2.1",
+    "pluralize": "^7.0.0",
+    "prop-types": "^15.8.1",
+    "react-lazyload": "^3.2.0",
+    "react-popper": "1.3.7",
+    "react-transition-group": "^4.4.2",
+    "react-window": "1.8.6",
+    "tslib": "^2.4.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@datanerd/nr1-e2e-test-proto": "^5.0.1",
+    "@datanerd/nr1-synthetics-test-proto": "^1.1.0",
+    "@datanerd/wanda-ts-generator": "^2.0.0",
+    "@snyk/protect": "^1.916.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@types/enzyme": "^3.10.9",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.24",
+    "@types/lodash": "^4.14.182",
+    "@types/memoize-one": "^5.1.2",
+    "@types/pluralize": "0.0.29",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-lazyload": "^3.1.1",
+    "@types/react-transition-group": "^4.4.3",
+    "@types/react-window": "^1.8.5",
+    "@types/uuid": "^8.3.1",
+    "cross-fetch": "^3.1.4",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "run.env": "^1.1.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.6.4"
+  },
+  "snyk": true
+}
